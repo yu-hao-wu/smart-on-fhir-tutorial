@@ -13,7 +13,8 @@
        // console.log('people are:', people);                             
         var patient = smart.user;
         var pt = patient.read();
-        var obv = smart.patient.api.fetchAll({
+        var people = smart.api.search({type: "Patient", query: {given: ["John", "Bob"], family: "Smith"});
+        var obv = smart.api.fetchAll({
                     type: 'Observation',
                     query: {
                       code: {
