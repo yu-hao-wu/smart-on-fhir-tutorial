@@ -8,7 +8,7 @@
     }
 
     function onReady(smart)  {
-      if (smart.hasOwnProperty('patient')) {
+      if (smart.hasOwnProperty('user')) {
        // var people = smart.api.search({type: "Patient", query: {given: ["John", "Bob"], family: "Smith"});
        // console.log('people are:', people);                             
         var patient = smart.user;
