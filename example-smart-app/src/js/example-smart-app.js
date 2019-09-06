@@ -9,9 +9,9 @@
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
-        var people = smart.api.search({type: "Patient", query: {given: ["John", "Bob"], family: "Smith"});
-        console.log('people are:', people);                             
-        var patient = smart.patient;
+       // var people = smart.api.search({type: "Patient", query: {given: ["John", "Bob"], family: "Smith"});
+       // console.log('people are:', people);                             
+        var patient = smart.user;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
