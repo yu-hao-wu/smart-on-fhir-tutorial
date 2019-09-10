@@ -13,20 +13,29 @@
        // console.log('people are:', people);                             
         var patient = smart.user;
         var pt = patient.read();
+        var array1, array2, array3;
         smart.api.search({type: "Patient", query: {birthdate: 'le1997-01-01', gender: 'female'}})
-        .then(function(bundle){
-        console.log('Search patients', bundle)
+        .then(function(bundle1){
+       // console.log('Search patients', bundle)
+          array1 = bundle1.data.entry;
+          console.log('Array1', array1)
+              smart.api.search({type: "Observation", query: {code: '39156-5', date: 'le2012-08-18'}})
+              .then(function(bundle2){
+             // console.log('Body Mass Index', bundle)
+                array2 = bundle2.data.entry;
+                console.log('Array2', array2)
+                  
+                smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18'}})
+                .then(function(bundle3){
+                  //console.log('Normal pregnancy', bundle)
+                  array3 = bundle3.data.entry;
+                  console.log('Array3', array3)
+                });
+              });
         });
         
-        smart.api.search({type: "Observation", query: {code: '39156-5', date: 'le2012-08-18'}})
-        .then(function(bundle){
-        console.log('Body Mass Index', bundle)
-        });
 
-        smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18'}})
-        .then(function(bundle){
-        console.log('Normal pregnancy', bundle)
-        });
+
         
         
         var obv = smart.api.fetchAll({
