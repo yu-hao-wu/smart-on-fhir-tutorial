@@ -1,8 +1,7 @@
-(function(window){
-  
 var array1 = [];
 var array2 = {};
 var array3 = [];
+(function(window){
   
   window.extractData = function() {
     var ret = $.Deferred();
@@ -24,7 +23,7 @@ var array3 = [];
           bundle1.data.entry.forEach(function(element){
             array1.push(element.resource.id);
           });
-              smart.api.search({type: "Observation", query: {code: '39156-5', date: 'le2012-08-18'}})
+              smart.api.search({type: "Observation", query: {code: '39156-5', date: '2018-12-20'}})
               .then(function(bundle2, array1){
              // console.log('Body Mass Index', bundle)
               //  array2 = bundle2.data.entry;
