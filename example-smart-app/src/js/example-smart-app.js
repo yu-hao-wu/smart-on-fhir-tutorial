@@ -1,4 +1,9 @@
 (function(window){
+  
+var array1 = [];
+var array2 = {};
+var array3 = [];
+  
   window.extractData = function() {
     var ret = $.Deferred();
 
@@ -13,9 +18,6 @@
        // console.log('people are:', people);                             
         var patient = smart.user;
         var pt = patient.read();
-        var array1 = [];
-        var array2 = [];
-        var array3 = [];
         smart.api.search({type: "Patient", query: {birthdate: 'le1997-01-01', gender: 'female'}})
         .then(function(bundle1){
        // console.log('Search patients', bundle)
@@ -25,22 +27,23 @@
               smart.api.search({type: "Observation", query: {code: '39156-5', date: 'le2012-08-18'}})
               .then(function(bundle2, array1){
              // console.log('Body Mass Index', bundle)
-                array2 = bundle2.data.entry;
-                console.log('Array2', array1)
+              //  array2 = bundle2.data.entry;
+              //  console.log('Array2', array1)
+                  bundle2.data.entry.forEach(function(element){
+                    array2[element.resource.subject.reference] = element.resource.valueQuantity.value;
+                  });
                   
                 smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18'}})
                 .then(function(bundle3){
                   //console.log('Normal pregnancy', bundle)
-                  array3 = bundle3.data.entry;
-                  console.log('Array3', array3)
+                  //array3 = bundle3.data.entry;
+                  //console.log('Array3', array3)
+                  bundle3.data.entry.forEach(function(element){
+                  array3.push(element.resource.subject.reference);
+                  });
                 });
               });
-        });
-        
-
-
-        
-        
+        });     
         var obv = smart.api.fetchAll({
                     type: 'Observation',
                     query: {
