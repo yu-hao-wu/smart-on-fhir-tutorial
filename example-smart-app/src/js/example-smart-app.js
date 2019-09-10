@@ -23,7 +23,7 @@
         console.log('Body Mass Index', bundle)
         });
 
-        smart.api.search({type: "Condition", query: {code: '72892002', recorded-date: 'le2012-08-18'}})
+        smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18'}})
         .then(function(bundle){
         console.log('Normal pregnancy', bundle)
         });
