@@ -30,7 +30,7 @@ var array4 = [];
               //  array2 = bundle2.data.entry;
               //  console.log('Array2', array1)
                   bundle2.data.entry.forEach(function(element){
-                    array2[element.resource.subject.reference] = element.resource.valueQuantity.value;
+                    array2[element.resource.subject.reference.replace("Patient/", "")] = element.resource.valueQuantity.value;
                   });
                   
                 smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18', '_count':100}})
@@ -39,7 +39,7 @@ var array4 = [];
                   //array3 = bundle3.data.entry;
                   //console.log('Array3', array3)
                   bundle3.data.entry.forEach(function(element){
-                  array3.push(element.resource.subject.reference);
+                  array3.push(element.resource.subject.reference.replace("Patient/", ""));
                   });
                   
                   
