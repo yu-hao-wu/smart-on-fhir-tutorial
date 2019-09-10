@@ -13,7 +13,9 @@
        // console.log('people are:', people);                             
         var patient = smart.user;
         var pt = patient.read();
-        var array1, array2, array3;
+        var array1 = [];
+        var array2 = [];
+        var array3 = [];
         smart.api.search({type: "Patient", query: {birthdate: 'le1997-01-01', gender: 'female'}})
         .then(function(bundle1){
        // console.log('Search patients', bundle)
