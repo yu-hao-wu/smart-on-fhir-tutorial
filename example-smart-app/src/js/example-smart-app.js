@@ -42,7 +42,11 @@ var array4 = [];
                   array3.push(element.resource.subject.reference.replace("Patient/", ""));
                   });
                   
-                  
+                  array1.filter(value => -1 !== array3.indexOf(value)).forEach(function(element){
+                    if(array2.hasOwnProperty(element)){
+                      array4.push(element)
+                    }
+                  }
                 });
               });
         });     
