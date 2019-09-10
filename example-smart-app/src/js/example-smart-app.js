@@ -17,13 +17,14 @@
         smart.api.search({type: "Patient", query: {birthdate: 'le1997-01-01', gender: 'female'}})
         .then(function(bundle1){
        // console.log('Search patients', bundle)
-          array1 = bundle1.data.entry;
-          console.log('Array1', array1)
+          bundle1.data.entry.forEach(function(element){
+            array1.push(element.resource.id);
+          });
               smart.api.search({type: "Observation", query: {code: '39156-5', date: 'le2012-08-18'}})
-              .then(function(bundle2){
+              .then(function(bundle2, array1){
              // console.log('Body Mass Index', bundle)
                 array2 = bundle2.data.entry;
-                console.log('Array2', array2)
+                console.log('Array2', array1)
                   
                 smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18'}})
                 .then(function(bundle3){
