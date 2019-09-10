@@ -18,12 +18,12 @@
         console.log('Search patients', bundle)
         });
         
-        smart.api.search({type: "Observation", query: {code: '39156-5'}})
+        smart.api.search({type: "Observation", query: {code: '39156-5', dateRecorded: 'le2012-08-18'}})
         .then(function(bundle){
         console.log('Body Mass Index', bundle)
         });
 
-        smart.api.search({type: "Condition", query: {code: '72892002'}})
+        smart.api.search({type: "Condition", query: {code: '72892002', dateRecorded: 'le2012-08-18'}})
         .then(function(bundle){
         console.log('Normal pregnancy', bundle)
         });
