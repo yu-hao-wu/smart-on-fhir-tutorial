@@ -25,7 +25,7 @@ var array4 = [];
             array1.push(element.resource.id);
           });
               smart.api.search({type: "Observation", query: {code: '39156-5', date: 'ge2018-12-20', '_count':100}})
-              .then(function(bundle2, array1){
+              .then(function(bundle2){
              // console.log('Body Mass Index', bundle)
               //  array2 = bundle2.data.entry;
               //  console.log('Array2', array1)
@@ -42,11 +42,11 @@ var array4 = [];
                   array3.push(element.resource.subject.reference.replace("Patient/", ""));
                   });
                   
-                  array1.filter(value => -1 !== array3.indexOf(value)).forEach(function(element){
-                    if(array2.hasOwnProperty(element)){
-                      array4.push(element)
-                    }
-                  }
+                      array1.filter(value => -1 !== array3.indexOf(value)).forEach(function(element){
+                        if(array2.hasOwnProperty(element)){
+                          array4.push(element);
+                        }
+                      });
                 });
               });
         });     
