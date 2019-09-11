@@ -48,10 +48,11 @@ var array4 = {};
                     tmpDict[id] = array4[id];
                     tmpArray.push(id);
                    }
-                   array4 = tmpDict;
-                   array1 = tmpArray;
                   });
-                  
+                
+                   array4 = tmpDict;
+                   array1 = tmpArray;  
+                
                 smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18', '_count':100}})
                 .then(function(bundle3){
                   //console.log('Normal pregnancy', bundle)
@@ -67,8 +68,9 @@ var array4 = {};
                     array4[id].recordedDate = element.resource.recordedDate;
                     tmpDict[id] = array4[id];
                    }
-                   array4 = tmpDict;
                   });
+                  
+                   array4 = tmpDict;
                   /*
                       array1.filter(value => -1 !== array3.indexOf(value)).forEach(function(element){
                         if(array2.hasOwnProperty(element)){
