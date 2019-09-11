@@ -42,8 +42,9 @@ var array4 = {};
                    // array2[element.resource.subject.reference.replace("Patient/", "")] = element.resource.valueQuantity.value;
 
                    var id = element.resource.subject.reference.replace("Patient/", "");
-                   if(array1.includes(id)){
-                    array4[id].bmi = element.resource.valueQuantity.value;
+                   var bmi = element.resource.valueQuantity.value;
+                   if(array1.includes(id) && bmi < 30){
+                    array4[id].bmi = bmi;
                     array4[id].effectiveDate = element.resource.effectiveDateTime;
                     tmpDict[id] = array4[id];
                     tmpArray.push(id);
