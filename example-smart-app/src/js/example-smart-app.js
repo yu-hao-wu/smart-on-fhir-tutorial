@@ -36,12 +36,12 @@ var array4 = {};
              // console.log('Body Mass Index', bundle)
               //  array2 = bundle2.data.entry;
               //  console.log('Array2', array1)
+                   var tmpDict = {};
+                   var tmpArray = [];
                   bundle2.data.entry.forEach(function(element){
                    // array2[element.resource.subject.reference.replace("Patient/", "")] = element.resource.valueQuantity.value;
 
                    var id = element.resource.subject.reference.replace("Patient/", "");
-                   var tmpDict = {};
-                   var tmpArray = [];
                    if(array1.includes(id)){
                     array4[id].bmi = element.resource.valueQuantity.value;
                     array4[id].effectiveDate = element.resource.effectiveDateTime;
@@ -57,11 +57,11 @@ var array4 = {};
                   //console.log('Normal pregnancy', bundle)
                   //array3 = bundle3.data.entry;
                   //console.log('Array3', array3)
+                   var tmpDict = {};
+                   var tmpArray = [];
                   bundle3.data.entry.forEach(function(element){
                //   array3.push(element.resource.subject.reference.replace("Patient/", ""));
                     var id = element.resource.subject.reference.replace("Patient/", "");
-                    var tmpDict = {};
-                   var tmpArray = [];
                    if(array1.includes(id)){
                     array4[id].normalPregnancy = "normalPregnancy";
                     array4[id].recordedDate = element.resource.recordedDate;
