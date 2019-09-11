@@ -31,7 +31,7 @@ var array4 = {};
             p.gender = element.resource.gender;
             array4[id] = p;
           });
-              smart.api.search({type: "Observation", query: {code: '39156-5', date: 'ge2016-12-20', '_count':300}})
+              smart.api.search({type: "Observation", query: {code: '39156-5', date: 'ge2017-12-30', '_count':300}})
               .then(function(bundle2){
              // console.log('Body Mass Index', bundle)
               //  array2 = bundle2.data.entry;
@@ -53,7 +53,7 @@ var array4 = {};
                    array4 = tmpDict;
                    array1 = tmpArray;  
                 
-                smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'ge2012-08-18', '_count':300}})
+                smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'ge2017-12-30', '_count':300}})
                 .then(function(bundle3){
                   //console.log('Normal pregnancy', bundle)
                   //array3 = bundle3.data.entry;
