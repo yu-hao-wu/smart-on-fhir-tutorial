@@ -27,7 +27,7 @@ var array4 = {};
             var p = defaultPatient();
             p.birthdate = element.resource.birthDate;
             p.fname = element.resource.name[0].family;
-            p.lname = element.resource.name[0].given;
+            p.lname = element.resource.name[0].given[0];
             p.gender = element.resource.gender;
             array4[id] = p;
           });
