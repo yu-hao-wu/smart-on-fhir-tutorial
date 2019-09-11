@@ -130,10 +130,10 @@ var array4 = {};
       return undefined;
     }
   }
-
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
+    /*
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
@@ -142,6 +142,29 @@ var array4 = {};
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    */
+    var table = document.getElementById("patientListTable");
+    p.forEach(function(element){
+      var row = table.insertRow(1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
+      var cell7 = row.insertCell(6);
+      var cell8 = row.insertCell(7);
+      var cell9 = row.insertCell(8);
+      cell1.innerHTML = "Test1";
+      cell2.innerHTML = "test2";
+      cell3.innerHTML = "test2";
+      cell4.innerHTML = "test2";
+      cell5.innerHTML = "test2";
+      cell6.innerHTML = "test2";
+      cell7.innerHTML = "test2";
+      cell8.innerHTML = "test2";
+      cell9.innerHTML = "test2";
+    });
   };
 
 })(window);
