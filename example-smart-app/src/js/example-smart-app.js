@@ -51,6 +51,7 @@ var array4 = [];
                 });
               });
         });     
+      }
     }
 
     FHIR.oauth2.ready(onReady, onError);
