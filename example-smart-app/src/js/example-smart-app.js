@@ -1,7 +1,7 @@
 var array1 = [];
 var array2 = {};
 var array3 = [];
-var array4 = [];
+var array4 = {};
 (function(window){
   
   window.extractData = function() {
@@ -22,7 +22,14 @@ var array4 = [];
         .then(function(bundle1){
        // console.log('Search patients', bundle)
           bundle1.data.entry.forEach(function(element){
-            array1.push(element.resource.id);
+            var id = element.resource.id;
+            array1.push(id);
+            var p = defaultPatient();
+            p.birthdate = element.resource.birthDate;
+            p.fname = element.resource.name[0].family;
+            p.lname = element.resource.name[0].given;
+            p.gender = element.resource.gender;
+            array4[id] = p;
           });
               smart.api.search({type: "Observation", query: {code: '39156-5', date: 'ge2018-12-20', '_count':100}})
               .then(function(bundle2){
@@ -30,7 +37,19 @@ var array4 = [];
               //  array2 = bundle2.data.entry;
               //  console.log('Array2', array1)
                   bundle2.data.entry.forEach(function(element){
-                    array2[element.resource.subject.reference.replace("Patient/", "")] = element.resource.valueQuantity.value;
+                   // array2[element.resource.subject.reference.replace("Patient/", "")] = element.resource.valueQuantity.value;
+
+                   var id = element.resource.subject.reference.replace("Patient/", "");
+                   var tmpDict = {};
+                   var tmpArray = [];
+                   if(array1.includes(id)){
+                    array4[id].bmi = element.resource.valueQuantity.value;
+                    array4[id].effectiveDate = element.resource.effectiveDateTime;
+                    tmpDict[id] = array4[id];
+                    tmpArray.push(id);
+                   }
+                   array4 = tmpDict;
+                   array1 = tmpArray;
                   });
                   
                 smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18', '_count':100}})
@@ -39,21 +58,31 @@ var array4 = [];
                   //array3 = bundle3.data.entry;
                   //console.log('Array3', array3)
                   bundle3.data.entry.forEach(function(element){
-                  array3.push(element.resource.subject.reference.replace("Patient/", ""));
+               //   array3.push(element.resource.subject.reference.replace("Patient/", ""));
+                    var id = element.resource.subject.reference.replace("Patient/", "");
+                    var tmpDict = {};
+                   var tmpArray = [];
+                   if(array1.includes(id)){
+                    array4[id].normalPregnancy = "normalPregnancy";
+                    array4[id].recordedDate = element.resource.recordedDate;
+                    tmpDict[id] = array4[id];
+                   }
+                   array4 = tmpDict;
                   });
-                  
+                  /*
                       array1.filter(value => -1 !== array3.indexOf(value)).forEach(function(element){
                         if(array2.hasOwnProperty(element)){
                           array4.push(element);
                         }
                       });
+                  */
                   ret.resolve(array4);
                 });
               });
         });     
       }
     }
-
+    
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
