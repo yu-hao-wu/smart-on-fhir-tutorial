@@ -130,6 +130,7 @@ var array4 = {};
       return undefined;
     }
   }
+  
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
@@ -144,27 +145,29 @@ var array4 = {};
     $('#hdl').html(p.hdl);
     */
     var table = document.getElementById("patientListTable");
-    p.forEach(function(element){
-      var row = table.insertRow(1);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
-      var cell6 = row.insertCell(5);
-      var cell7 = row.insertCell(6);
-      var cell8 = row.insertCell(7);
-      var cell9 = row.insertCell(8);
-      cell1.innerHTML = "Test1";
-      cell2.innerHTML = "test2";
-      cell3.innerHTML = "test2";
-      cell4.innerHTML = "test2";
-      cell5.innerHTML = "test2";
-      cell6.innerHTML = "test2";
-      cell7.innerHTML = "test2";
-      cell8.innerHTML = "test2";
-      cell9.innerHTML = "test2";
-    });
+    for (var key in p) {
+      if (p.hasOwnProperty(key)) {
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+        var cell8 = row.insertCell(7);
+        var cell9 = row.insertCell(8);
+        cell1.innerHTML = key;
+        cell2.innerHTML = p[key].fname;
+        cell3.innerHTML = p[key].lname;
+        cell4.innerHTML = p[key].gender;
+        cell5.innerHTML = p[key].birthdate;
+        cell6.innerHTML = p[key].bmi;
+        cell7.innerHTML = p[key].effectiveDate;
+        cell8.innerHTML = p[key].normalPregnancy;
+        cell9.innerHTML = p[key].recordedDate;
+      }
+    }
   };
 
 })(window);
