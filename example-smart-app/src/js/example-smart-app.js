@@ -96,11 +96,10 @@ var array4 = {};
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
-      height: {value: ''},
-      systolicbp: {value: ''},
-      diastolicbp: {value: ''},
-      ldl: {value: ''},
-      hdl: {value: ''},
+      bmi: {value: ''},
+      effectiveDate: {value: ''},
+      normalPregnancy: {value: ''},
+      recordedDate: {value: ''}
     };
   }
 
