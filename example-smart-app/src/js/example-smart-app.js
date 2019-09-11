@@ -31,7 +31,7 @@ var array4 = {};
             p.gender = element.resource.gender;
             array4[id] = p;
           });
-              smart.api.search({type: "Observation", query: {code: '39156-5', date: 'ge2018-12-20', '_count':100}})
+              smart.api.search({type: "Observation", query: {code: '39156-5', date: 'ge2016-12-20', '_count':100}})
               .then(function(bundle2){
              // console.log('Body Mass Index', bundle)
               //  array2 = bundle2.data.entry;
