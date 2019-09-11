@@ -18,7 +18,7 @@ var array4 = {};
        // console.log('people are:', people);                             
         var patient = smart.user;
         var pt = patient.read();
-        smart.api.search({type: "Patient", query: {birthdate: 'le1997-01-01', gender: 'female', '_count':100}})
+        smart.api.search({type: "Patient", query: {birthdate: 'ge1997-01-01', gender: 'female', '_count':100}})
         .then(function(bundle1){
        // console.log('Search patients', bundle)
           bundle1.data.entry.forEach(function(element){
@@ -53,7 +53,7 @@ var array4 = {};
                    array4 = tmpDict;
                    array1 = tmpArray;  
                 
-                smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'le2012-08-18', '_count':100}})
+                smart.api.search({type: "Condition", query: {code: '72892002', 'recorded-date': 'ge2012-08-18', '_count':100}})
                 .then(function(bundle3){
                   //console.log('Normal pregnancy', bundle)
                   //array3 = bundle3.data.entry;
